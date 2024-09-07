@@ -12,7 +12,28 @@
 
 <body>
 <a href="./index.html">Back home</a>
-  
+<form class="form">
+    <label>
+        Delay (ms)
+        <input type="number" name="delay" required />
+    </label>
+
+    <fieldset class="fieldset">
+        <legend>State</legend>
+        <div class="radio-group">
+        <label class="lbl">
+            <input type="radio" name="state" value="fulfilled" required />
+            Fulfilled
+        </label>
+        <label class="lbl">
+            <input type="radio" name="state" value="rejected" required />
+            Rejected
+        </label>
+        </div>
+    </fieldset>
+
+    <button class="button-snackbar" type="submit">Create notification</button>
+</form>
 
     <script type="module" src="./js/2-snackbar.js"></script>
 </body>

@@ -1,43 +1,46 @@
-let formData = { email: "", message: "" };
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
-const feedbackForm = document.querySelector(".feedback-form");
-const localStorageKey = "feedback-form-state";
+const formSnackbar = document.querySelector(".form");
+// const radioCheck = document.querySelector([type = "radio"]);
+// const btnSnackbar = document.querySelector([type = "submit"]);
 
-function loadFormData() {
-  try {
-    const formDataSave = localStorage.getItem(localStorageKey);
-    if (formDataSave) {
-      formData = JSON.parse(formDataSave);
-      feedbackForm.elements.email.value = formData.email || "";
-      feedbackForm.elements.message.value = formData.message || "";
-    }
-  } catch (error) {
-    console.log("Error parsing saved data local storage:", error);
-  }
+formSnackbar.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const delay = parseInt(event.target.delay.value);
+    const state = event.target.state.value;
+
+function createPromise(delay, state) {
+    return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        if (state === 'fulfilled') {
+        resolve(delay);
+        } else {
+        reject(delay);
+        }
+    }, delay);
+    });
 }
-loadFormData();
 
-feedbackForm.addEventListener("input", (event) => {
-  formData = { ...formData, [event.target.name]: event.target.value.trim() }
-  
-  localStorage.setItem(localStorageKey, JSON.stringify(formData));
-  
+createPromise(delay, state)
+    .then((delay) => {
+    iziToast.success({
+        title: "OK",
+        message: "✅ Fulfilled promise in ${delay}ms",
+        position: "topRight",
+        messageColor: "white",
+        titleColor: "white",
 });
-
-feedbackForm.addEventListener("submit", (event) => {
-  event.preventDefault(); 
-    if (!formData.email.trim()|| !formData.message.trim()) {
-    alert("Fill please all fields");
-    return;
-
-    }
-    else {
-        console.log('Form submitted:', formData);
-  }
-  
-  localStorage.removeItem(localStorageKey);
-  
-  feedbackForm.reset();
-
-formData = { email: "", message: "" }; 
+    })
+    .catch((delay) => {
+    iziToast.error({
+        title: "Error",
+        message: "❌ Rejected promise in ${delay}ms",
+        position: "topRight",
+        backgroundColor: "red",
+        messageColor: "white",
+        titleColor: "white",
+    });
+    });
 });
