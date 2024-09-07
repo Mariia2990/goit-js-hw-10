@@ -8,13 +8,36 @@
     <title>Form</title>
   <script type="module" crossorigin src="/goit-js-hw-10/2-snackbar.js"></script>
   <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/2-snackbar-B_SY1GJM.css">
-  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-CFCH-0t9.css">
+  <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-BbbuE1sJ.js">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-CZjNVMTf.css">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/2-snackbar-DBdb_IMb.css">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-CO7Kc7Nl.css">
 </head>
 
 <body>
 <a href="./index.html">Back home</a>
-  
+<form class="form">
+    <label>
+        Delay (ms)
+        <input type="number" name="delay" required />
+    </label>
+
+    <fieldset class="fieldset">
+        <legend>State</legend>
+        <div class="radio-group">
+        <label class="lbl">
+            <input type="radio" name="state" value="fulfilled" required />
+            Fulfilled
+        </label>
+        <label class="lbl">
+            <input type="radio" name="state" value="rejected" required />
+            Rejected
+        </label>
+        </div>
+    </fieldset>
+
+    <button class="button-snackbar" type="submit">Create notification</button>
+</form>
 
 </body>
 
