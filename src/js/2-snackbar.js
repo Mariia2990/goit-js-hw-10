@@ -6,8 +6,8 @@ const formSnackbar = document.querySelector(".form");
 formSnackbar.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const delay = parseInt(event.target.delay.value);
-    const state = event.target.state.value;
+    let delay = parseInt(event.target.delay.value);
+    let state = event.target.state.value;
 
 function createPromise(delay, state) {
     return new Promise((resolve, reject) => {
@@ -25,7 +25,7 @@ createPromise(delay, state)
     .then((delay) => {
     iziToast.success({
         title: "OK",
-        message: "✅ Fulfilled promise in ${delay}ms",
+        message: `✅ Fulfilled promise in ${delay} ms`,
         position: "topRight",
         messageColor: "white",
         titleColor: "white",
@@ -34,7 +34,7 @@ createPromise(delay, state)
     .catch((delay) => {
     iziToast.error({
         title: "Error",
-        message: "❌ Rejected promise in ${delay}ms",
+        message: `❌ Rejected promise in ${delay} ms`,
         position: "topRight",
         backgroundColor: "red",
         messageColor: "white",
