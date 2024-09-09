@@ -2,8 +2,6 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 const formSnackbar = document.querySelector(".form");
-// const radioCheck = document.querySelector([type = "radio"]);
-// const btnSnackbar = document.querySelector([type = "submit"]);
 
 formSnackbar.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -44,3 +42,4 @@ createPromise(delay, state)
     });
     });
 });
+
